@@ -4,6 +4,8 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.UnsupportedLookAndFeelException;
  
 public class Screen extends Frame {
  
@@ -65,7 +67,8 @@ public class Screen extends Frame {
     private double f(double x) {
         return x * x;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws  InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+    	
         new Screen().setVisible(true);
     }
 }

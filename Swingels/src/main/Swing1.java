@@ -2,8 +2,6 @@ package main;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Polygon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -14,27 +12,25 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JRootPane;
 import javax.swing.JSeparator;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class Swing1 {
-	 
+
 	public static void main(String[] args) {
 		// Erzeugung eines neuen Frames mit dem Titel "Beispiel JFrame "
 		JFrame meinFrame = new JFrame("Beispiel JFrame");
 		// Wir setzen die Breite und die Höhe unseres Fensters
 		meinFrame.setSize(1300, 800);
 		meinFrame.addWindowListener(new WindowAdapter() {
-	         public void windowClosing(WindowEvent e) {
-	            System.exit(0);
-	         }
-	      });
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 		Container contentPane = meinFrame.getContentPane();
 		createMenu(meinFrame);
 		showPopup(contentPane);
@@ -61,7 +57,7 @@ public class Swing1 {
 		}
 
 		meinFrame.setVisible(true);
-	
+
 	}
 
 	private static void showPopup(Container meinFrame) {
@@ -77,8 +73,8 @@ public class Swing1 {
 		// Erzeugung eines Objektes der Klasse JCheckBoxMenuItem
 		JCheckBoxMenuItem checkBoxItem = new JCheckBoxMenuItem("JCheckBoxMenuItem innerhalb eines JPopups");
 		// Erzeugung eines Objektes der Klasse JRadioButtonMenuItem
-		JRadioButtonMenuItem radioButtonItem = new JRadioButtonMenuItem(
-				"JRadionButtonMenuItem innerhalb eines JPopups", true);
+		JRadioButtonMenuItem radioButtonItem = new JRadioButtonMenuItem("JRadionButtonMenuItem innerhalb eines JPopups",
+				true);
 		// Wir fügen unsere Menüeinträge unserem Kontextmenü hinzu
 		pop.add(item);
 		pop.add(sep);
@@ -86,7 +82,7 @@ public class Swing1 {
 		pop.add(radioButtonItem);
 		// Wir lassen unser JPopupMenu anzeigen
 		meinFrame.add(pop);
-        pop.setVisible(true);
+		pop.setVisible(true);
 	}
 
 	private static void createMenu(JFrame meinFrame) {
@@ -112,6 +108,7 @@ public class Swing1 {
 		meinFrame.setJMenuBar(bar);
 	}
 
+	@SuppressWarnings("unused")
 	private static void createColorChooserDialog() {
 		// Erzeugung eines neuen Frames mit
 		// dem Titel Beispiel JDialog

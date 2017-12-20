@@ -27,7 +27,7 @@ public class FunctionsController extends ListenerAdapter {
 		if (e.getActionCommand() == functionsModel
 				.getProperty("mathehilfe.view.panels.FunctionInputPanel.actioncommand.addfunction")) {
 			functionsModel.setFunctionInputPanel_fxInputText(functionsView.getFunctionInputPanel().getFxInputField());
-			functionsModel.addEntry();
+			functionsModel.addElementToMyFunctionsList();
 		}
 	}
 

@@ -1,4 +1,4 @@
-package mathehilfe.view.components;
+package mathehilfe.view;
 
 import java.awt.Color;
 
@@ -9,9 +9,9 @@ import javax.swing.JMenuItem;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-public class FunctionsMenuBar extends JMenuBar {
+public class MenuBarView extends JMenuBar {
 
-	public FunctionsMenuBar() {
+	public MenuBarView() {
 		Border bo = new LineBorder(Color.yellow);
 		setBorder(bo);
 		// Erzeugung eines Objektes der Klasse JMenu

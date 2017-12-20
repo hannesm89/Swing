@@ -10,7 +10,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Panel extends JPanel {
+@SuppressWarnings("serial")
+public class DrawPoly extends JPanel {
    public void paintComponent(Graphics g) {
       super.paintComponent(g);
       Polygon p = new Polygon();
@@ -31,7 +32,7 @@ public class Panel extends JPanel {
          } 
       }); 
       Container contentPane = frame.getContentPane();
-      contentPane.add(new Panel());
-      frame.show();
+      contentPane.add(new DrawPoly());
+      frame.setVisible(true);
    }
 }

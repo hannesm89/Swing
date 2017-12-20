@@ -20,7 +20,6 @@ public class FunctionsModel extends Observable {
 
 	public FunctionsModel() {
 		loadProperties();
-		setDefaultValues();
 		setMyFunctionsListModel();
 	}
 
@@ -44,7 +43,7 @@ public class FunctionsModel extends Observable {
 		
 	}
 
-	public void addEntry() {
+	public void addElementToMyFunctionsList() {
 		myFunctionsListModel.addElement(new CheckboxListItem(functionInputPanel_fxInputText));
 	}
 
@@ -52,10 +51,6 @@ public class FunctionsModel extends Observable {
 		myFunctionsListModel = new DefaultListModel<CheckboxListItem>();
 		myFunctionsListModel.addElement(new CheckboxListItem("apple"));
 		myFunctionsListModel.addElement(new CheckboxListItem("apple2"));
-	}
-
-	private void setDefaultValues() {
-		functionInputPanel_fxInputText = "12 * 3 + 2";
 	}
 
 	public DefaultListModel<CheckboxListItem> getMyFunctionsListModel() {
@@ -69,9 +64,9 @@ public class FunctionsModel extends Observable {
 		return Integer.parseInt(properties.getProperty(name));
 	}
 
-	public String getFunctionInputPanel_fxInputText() {
-		return functionInputPanel_fxInputText;
-	}
+//	public String getFunctionInputPanel_fxInputText() {
+//		return functionInputPanel_fxInputText;
+//	}
 
 	public void setFunctionInputPanel_fxInputText(String functionInputPanel_fxInputText) {
 		this.functionInputPanel_fxInputText = functionInputPanel_fxInputText;

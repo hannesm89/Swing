@@ -1,4 +1,4 @@
-package mathehilfe.view.components;
+package mathehilfe.view.panel;
 
 import java.awt.event.MouseListener;
 
@@ -12,12 +12,12 @@ import mathehilfe.CheckboxListItem;
 import mathehilfe.CheckboxListRenderer;
 import mathehilfe.model.FunctionsModel;
 
-public class MyFunctionsPanel extends JPanel {
+public class MyFunctionsView extends JPanel {
 	private JList<CheckboxListItem> myFunctionsList;
 	private JScrollPane sp;
 	private FunctionsModel functionsModel;
 
-	public MyFunctionsPanel(FunctionsModel functionsModel) {
+	public MyFunctionsView(FunctionsModel functionsModel) {
 		super();
 		this.functionsModel = functionsModel;
 		init();

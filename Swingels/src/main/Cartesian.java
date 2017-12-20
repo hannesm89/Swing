@@ -7,7 +7,8 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.UnsupportedLookAndFeelException;
  
-public class Screen extends Frame {
+@SuppressWarnings("serial")
+public class Cartesian extends Frame {
  
     private static final int SIZE = 300;
    
@@ -16,7 +17,7 @@ public class Screen extends Frame {
     private static final double yMin = -16;
     private static final double yMax = 16;
    
-    public Screen() {
+    public Cartesian() {
  
         this.setSize(SIZE,SIZE);
         addWindowListener(new WindowAdapter(){  public void windowClosing(WindowEvent e) {  dispose();}});
@@ -69,6 +70,6 @@ public class Screen extends Frame {
     }
     public static void main(String[] args) throws  InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
     	
-        new Screen().setVisible(true);
+        new Cartesian().setVisible(true);
     }
 }

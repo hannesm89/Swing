@@ -12,22 +12,24 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import mathehilfe.model.FunctionsModel;
-import mathehilfe.view.components.FunctionInputPanel;
-import mathehilfe.view.components.FunctionsMenuBar;
-import mathehilfe.view.components.MyFunctionsPanel;
-import mathehilfe.view.components.VisualPanel;
+import mathehilfe.view.panel.DisplayFunctionsView;
+import mathehilfe.view.panel.InputFunctionView;
+import mathehilfe.view.panel.MyFunctionsView;
 
 /**
  * @author HannesNB
  *
  */
 public class FunctionsView extends JFrame {
-	private FunctionsMenuBar menubar;
-	private FunctionInputPanel functionInputPanel;
-	private MyFunctionsPanel myFunctionsPanel;
-	private VisualPanel visualPanel;
+	private MenuBarView menubar;
+	private InputFunctionView functionInputPanel;
+	private MyFunctionsView myFunctionsPanel;
+	private DisplayFunctionsView visualPanel;
 
 	private FunctionsModel functionsModel;
 
@@ -36,6 +38,53 @@ public class FunctionsView extends JFrame {
 		this.functionsModel = functionsModel;
 		init(this.functionsModel.getPropertyInt("mathehilfe.framewidth"),
 				this.functionsModel.getPropertyInt("mathehilfe.frameheight"));
+		updateLAF();
+	}
+
+	private void updateLAF() {
+		int lAF = 3;
+		try {
+			String plaf = "";
+			if (lAF == 1) {
+				plaf = "javax.swing.plaf.metal.MetalLookAndFeel";
+			} else if (lAF == 2) {
+				plaf = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+			} else if (lAF == 3) {
+				plaf = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+			} else if (lAF == 4) {
+				plaf = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+			} else if (lAF == 5) {
+				plaf = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+			} else if (lAF == 6) {
+				plaf = UIManager.getSystemLookAndFeelClassName();
+			}
+
+			UIManager.setLookAndFeel(plaf);
+			SwingUtilities.updateComponentTreeUI(this);
+
+		} catch (UnsupportedLookAndFeelException ue) {
+			try {
+				UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException ce) {
+			System.err.println(ce.toString());
+		} catch (InstantiationException ie) {
+			System.err.println(ie.toString());
+		} catch (IllegalAccessException iae) {
+			System.err.println(iae.toString());
+		}
 	}
 
 	private void init(int width, int height) {
@@ -45,17 +94,17 @@ public class FunctionsView extends JFrame {
 
 	private void setLayout(int width, int height) {
 		setSize(width, height);
-		
-		menubar = new FunctionsMenuBar();
+
+		menubar = new MenuBarView();
 		setJMenuBar(menubar);
-		
+
 		GridBagLayout gbl = new GridBagLayout();
 		Container contentPane = getContentPane();
 		contentPane.setLayout(gbl);
 
-		functionInputPanel = new FunctionInputPanel(functionsModel);
-		myFunctionsPanel = new MyFunctionsPanel(functionsModel);
-		visualPanel=  new VisualPanel(functionsModel);
+		functionInputPanel = new InputFunctionView(functionsModel);
+		myFunctionsPanel = new MyFunctionsView(functionsModel);
+		visualPanel = new DisplayFunctionsView(functionsModel);
 		addComponent(contentPane, gbl, functionInputPanel, GridBagConstraints.NONE, 0, 0, 1, 1, 0, 0);
 		addComponent(contentPane, gbl, new JLabel("Meine Funktionen"), GridBagConstraints.NONE, 0, 2, 1, 1, 0, 0);
 		addComponent(contentPane, gbl, new JSeparator(), GridBagConstraints.NONE, 0, 2, 1, 1, 0, 0);
@@ -83,11 +132,11 @@ public class FunctionsView extends JFrame {
 		super.addWindowListener(wl);
 	}
 
-	public FunctionInputPanel getFunctionInputPanel() {
+	public InputFunctionView getFunctionInputPanel() {
 		return functionInputPanel;
 	}
 
-	public MyFunctionsPanel getMyFunctionsPanel() {
+	public MyFunctionsView getMyFunctionsPanel() {
 		return myFunctionsPanel;
 	}
 

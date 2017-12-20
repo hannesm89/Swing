@@ -21,7 +21,7 @@ public class MarioList {
 	public MarioList() {
 		String[] nameList = { "Mario", "Luigi", "Bowser", "Koopa", "Princess" };
 		imageMap = createImageMap(nameList);
-		JList list = new JList(nameList);
+		JList<String> list = new JList<String>(nameList);
 		list.setCellRenderer(new MarioListRenderer());
 
 		JScrollPane scroll = new JScrollPane(list);
@@ -35,12 +35,13 @@ public class MarioList {
 		frame.setVisible(true);
 	}
 
+	@SuppressWarnings("serial")
 	public class MarioListRenderer extends DefaultListCellRenderer {
 
 		Font font = new Font("helvitica", Font.BOLD, 24);
 
 		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
 				boolean cellHasFocus) {
 
 			JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);

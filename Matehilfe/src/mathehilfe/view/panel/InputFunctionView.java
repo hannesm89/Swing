@@ -1,4 +1,4 @@
-package mathehilfe.view.components;
+package mathehilfe.view.panel;
 
 import java.awt.event.ActionListener;
 
@@ -10,17 +10,14 @@ import javax.swing.JTextField;
 
 import mathehilfe.model.FunctionsModel;
 
-public class FunctionInputPanel extends JPanel {
+public class InputFunctionView extends JPanel {
 	private JLabel fxLabel;
 	private JTextField fxInputField;
 	private JButton fxAddButton;
 
 	private FunctionsModel functionsModel;
 
-	private final String Y_EQUALS_FX_LABEL = " y = f(x) =";
-	public final String BUTTON_ADD_LABEL = "Hinzufügen";
-
-	public FunctionInputPanel(FunctionsModel functionsModel) {
+	public InputFunctionView(FunctionsModel functionsModel) {
 		super();
 		this.functionsModel = functionsModel;
 		init();
@@ -29,9 +26,10 @@ public class FunctionInputPanel extends JPanel {
 	private void init() {
 		setLayout(new BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
-		fxLabel = new JLabel(Y_EQUALS_FX_LABEL);
-		fxInputField = new JTextField(functionsModel.getFunctionInputPanel_fxInputText(), 12);
-		fxAddButton = new JButton(BUTTON_ADD_LABEL);
+		fxLabel = new JLabel(functionsModel.getProperty("mathehilfe.view.panels.FunctionInputPanel.fxLabel"));
+		fxInputField = new JTextField(
+				functionsModel.getProperty("mathehilfe.view.panels.FunctionInputPanel.fxInputField.default"), 12);
+		fxAddButton = new JButton(functionsModel.getProperty("mathehilfe.button.add"));
 
 		add(fxLabel);
 		add(fxInputField);
